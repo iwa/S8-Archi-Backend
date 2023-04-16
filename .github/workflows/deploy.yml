@@ -17,4 +17,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           command: publish
-          preCommands: npm install --dev
+          preCommands: npm install --include=dev
