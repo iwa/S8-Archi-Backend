@@ -13,6 +13,7 @@
         "start": "wrangler dev",
         "deploy": "wrangler publish",
         "test": "vitest",
-        "reset-db": "wrangler d1 execute rentapi-dev --file ./schema.sql"
+        "reset-db": "wrangler d1 execute rentapi --file ./schema.sql",
+        "reset-db-dev": "wrangler d1 execute rentapi-dev --file ./schema.sql"
     }
 }

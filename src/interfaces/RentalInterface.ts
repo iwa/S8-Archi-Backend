@@ -6,4 +6,5 @@ export default interface RentalInterface {
     price: number,
     type: string,
     rented: boolean;
+    image?: string;
 }

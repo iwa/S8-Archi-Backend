@@ -1,13 +1,14 @@
 name = "rentapi"
 main = "src/index.ts"
 compatibility_date = "2023-04-04"
-workers_dev = false
-
-[env.dev]
-name = "rentapi-dev"
 workers_dev = true
 
 [[ d1_databases ]]
 binding = "DB"
-database_name = "rentapi-dev"
-database_id = "78f6b352-fa33-4f3e-a622-f6efdee95d94"
+database_name = "rentapi"
+database_id = "b4a21f57-54d2-4c8f-b213-e1c4fc574ab1"
+
+[[ r2_buckets ]]
+binding = "BUCKET"
+bucket_name = "rentapi"
+preview_bucket_name = "rentapi-preview"

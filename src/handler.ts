@@ -13,7 +13,8 @@ import GetUser from './handlers/users/GetUser';
 import PostUsers from './handlers/users/PostUsers';
 import PutUser from './handlers/users/PutUser';
 import DeleteUser from './handlers/users/DeleteUser';
-import LoginUser from './handlers/users/LoginUser';
+
+import DatabaseHelper from './utils/DatabaseHelper';
 
 
 const headers = {
@@ -37,11 +38,9 @@ router
     .get('/api/users/:id', GetUser)
     .post('/api/users', PostUsers)
     .put('/api/users/:id', PutUser)
-    .delete('/api/users/:id', DeleteUser)
-    .post('/api/users/login', LoginUser);
-
+    .delete('/api/users/:id', DeleteUser);
 
 // 404
 router.all('*', () => new Response('Not found', { status: 404 }));
 
-export const handleRequest = (request: RequestLike, env: Env) => router.handle(request, headers, env);
+export const handleRequest = (request: RequestLike, env: Env, ctx: ExecutionContext, db: DatabaseHelper) => router.handle(request, headers, db, env);

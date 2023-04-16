@@ -1,45 +1,27 @@
 import RentalInterface from "../interfaces/RentalInterface";
-
-const _data: RentalInterface[] = [
-    {
-        id: 1,
-        ownerId: 1,
-        address: '12 Rue Derriere',
-        city: 'Ici',
-        price: 800.0,
-        type: "House",
-        rented: false
-    },
-    {
-        id: 2,
-        ownerId: 1,
-        address: '34 Rue Devant',
-        city: 'La',
-        price: 1200.0,
-        type: "House",
-        rented: true
-    },
-];
+import DatabaseHelper from "../utils/DatabaseHelper";
 
 export default new class RentalsStore {
-    async all() {
-        return _data;
+
+    async all(db: DatabaseHelper) {
+        return db.getRentals();
     }
 
-    async find(id: number) {
-        return _data.find(post => post.id.toString() === id.toString());
+    async find(db: DatabaseHelper, id: number) {
+        return db.getOneRental(id);
     }
 
-    async add(data: RentalInterface) {
-        _data.push(data);
+    async add(db: DatabaseHelper, data: RentalInterface) {
+        db.addRental(data);
+        return data;
     }
 
-    async edit(id: number, data: RentalInterface) {
-        // sql update
+    async edit(db: DatabaseHelper, id: number, data: RentalInterface) {
+        return db.updateRental(data);
     }
 
-    async delete(id: number) {
-        // sql delete
+    async delete(db: DatabaseHelper, id: number) {
+        return db.deleteRental(id);
     }
 }
 
